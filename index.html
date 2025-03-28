@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Elegant Sarees Collection</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #d63384;
+    padding: 15px;
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.logo h1 {
+    margin: 0;
+}
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 250px;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 10px 40px 10px 10px; /* Leave space for the icon */
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+}
+
+.search-container button {
+    position: absolute;
+    right: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: gray;
+}
+
+.search-container button  {
+    font-size: 16px;
+}
+.search-container button:hover{
+    
+    border-radius:20px ;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    color: #b22222;
+    font-size: 16px;
+}
+
+   
+
+nav {
+    position: relative;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+    .header{
+        
+        flex-direction: column;
+        text-align: center;
+    }
+    .logo{
+        max-width: 80px;
+    }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        background: #d63384;
+        top: 50px;
+        right: 0;
+        width: 200px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+    
+}
+
+/* Banner */
+.banner img {
+    width: 100%;
+    height: auto;
+}
+.banner img:hover{
+    transform:scale(1.05);
+}
+
+/* Saree Collection */
+.saree-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.saree-item {
+    background: #fff3f6;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.saree-item:hover {
+    transform: scale(1.05);
+}
+
+
+.saree-item img {
+    width: 100%;
+    height: 250px;
+    border-radius: 5px;
+}
+
+.saree-item a {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #d63384;
+    text-decoration: none;
+    color: #fff3f6;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+/* Footer */
+footer {
+    background: #d63384;
+    color: white;
+    padding: 10px;
+    margin-top: 20px;
+}
+/* Blog Section */
+#blog {
+    background: #fff3f6;
+    padding: 30px;
+    text-align: center;
+}
+
+.blog-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.blog-post {
+    display: inline-block;
+    width: 300px;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.blog-post img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.blog-post a {
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    background-color: #d63384;
+    color:#fff3f6;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.blog-post :hover{
+    transform:scale(1.05);
+}
+
+/* Contact Section */
+#contact {
+    padding: 30px;
+    text-align: center;
+    background: #d63384;
+    color: white;
+}
+
+#contact-form {
+    max-width: 400px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#contact-form input, #contact-form textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+#contact-form button {
+    padding: 10px;
+    border: none;
+    background: white;
+    color: #d63384;
+    font-weight: bold;
+    cursor: pointer;
+}
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuToggle.addEventListener("click", function () {
+        navLinks.classList.toggle("active");
+    });
+
+    // Contact Form Submission Alert
+    const contactForm = document.getElementById("contact-form");
+    contactForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        alert("Thank you for reaching out! We will get back to you soon.");
+        contactForm.reset();
+    });
+});
+    </script>
+</head>
+<body>
+    <header>
+        <img src="C:\Users\madhu\Downloads\preview-removebg-preview (1).png" alt="logo" class="logo" width="80px" height="80px">
+
+        <h1>Elegant Sarees</h1>
+            <div class="search-container">
+                <input type="text" placeholder="Search...">
+                <button type="submit">
+                <i class="fas fa-search"></i>
+                </button>
+            </div>
+                <i class="fa-solid fa-house"></i>
+                <i class="fa-solid fa-cart-shopping"></i>
+           
+            </div>
+        <nav>
+            <button class="menu-toggle">☰</button>
+            <ul class="nav-links">
+                <li><a href="#collection">Collection</a></li>
+                <li><a href="#blog">Fashion Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="banner">
+        <img src="https://i.pinimg.com/originals/73/9a/a8/739aa8db6199c7b38c3d84ca3fe494c4.jpg" alt="Saree Banner">
+        
+    </section>
+
+    <section id="collection">
+        <h2>Our Saree Collection</h2>
+        <div class="saree-grid">
+            <div class="saree-item">
+                <img src="https://m.media-amazon.com/images/I/91Bsyno5rCL._SY879_.jpg" alt="Saree 1">
+                <h3>Kanchipuram Sarees </h3>
+            
+            <h3>Origin: Tamil Nadu, India</h3>
+               <p> Description: Known for its vibrant colors, intricate designs, 
+                and heavy gold zari work, Kanchipuram sarees are a 
+                classic choice for special occasions.</p>
+                <a href="https://m.media-amazon.com/images/I/81NrkBTZ6OL._SY879_.jpg" target="_blank">View More</a>
+            </div>
+            <div class="saree-item">
+                <img src="https://m.media-amazon.com/images/I/91vSMfGdmXL._SX679_.jpg" alt="Saree 2">
+                <h3>Banarasi Silk Saree</h3>
+                <h3>Origin: Varanasi,India</h3>
+                <p>A timeless classic with gold embroidery and heritage designs.</p>
+                <a href="https://m.media-amazon.com/images/I/91Z0+rI6+fL._SY879_.jpg" target="_blank">View More</a>
+            </div>
+            <div class="saree-item">
+                <img src="https://m.media-amazon.com/images/I/71Laa9Ur-hL._SX679_.jpg" alt="Saree 3">
+                <h3>Kanjivaram Saree</h3>
+                    <h3>Origin: Tamil Nadu,India</h3>
+                    <p>Traditional South Indian saree with bold colors and motifs.</p>
+                <a href="https://m.media-amazon.com/images/S/aplus-media-library-service-media/18cd5ee2-dbb5-463e-b0a3-1d5cb47e9d11.__CR0,0,970,600_PT0_SX970_V1___.jpg" target="_blank">View More</a>
+            </div>
+            <div class="saree-item">
+                <img src="https://m.media-amazon.com/images/I/61ylr2cGxZL._SX679_.jpg" alt="Saree 4">
+                <h3>Tissue Silk Saree</h3>
+                    <h3>Origin: South India</h3>
+                    <p>Delicate sheen with a soft and luxurious feel.</p>
+                <a href="https://m.media-amazon.com/images/S/aplus-media-library-service-media/6e511eda-c81c-4424-a006-1475ee03fdb3.__CR0,0,970,600_PT0_SX970_V1___.jpg" target="_blank">View More</a>
+            </div>
+            <div class="saree-item">
+                <img src="https://ivalinmabia.com/cdn/shop/files/madura-mangalagiri-saree-pink-and-orange-sarees-263.webp?v=1712982339&width=1100" alt="Saree 5">
+                <h3>Mangalagiri Cotton Saree</h3>
+                    <h3>Origin : Guntur,India</h3>
+                    <p>These sarees are type of traditional Indian saree originating from Mangalagiri town</p>
+                <a href=" https://ivalinmabia.com/cdn/shop/files/madura-mangalagiri-saree-pink-and-orange-sarees-928.webp?v=1712982363&width=1100" target="_blank">View More</a>
+            </div>
+            <div class="saree-item">
+                <img src="https://m.media-amazon.com/images/I/813B0Ho1LkL._SY879_.jpg" alt="Saree 6">
+                <h3>Chanderi Cotton Saree</h3>
+                    <h3>Origin: Madhya Pradesh</h3>
+                    <p>Lightweight and comfortable, perfect for summer.</p>
+                <a href="https://m.media-amazon.com/images/I/81QRyQmY+aL._SY879_.jpg" target="_blank">View More</a>
+            </div>
+            <div class="saree-item">
+                <img src="https://m.media-amazon.com/images/I/81Ys9XgK4XL._SY879_.jpg" alt="Saree 7">
+                <h3>Designer Saree</h3>
+                <h3>Origin: West Bengal</h3>
+                <p>Modern, stylish, and crafted for special occasions.</p>
+                <a href="https://m.media-amazon.com/images/S/aplus-media-library-service-media/f5ec4457-5015-49d3-b851-caa68beae9c5.__CR0,0,3660,1500_PT0_SX1464_V1___.jpg" target="_blank">View More</a>
+            </div>
+            <div class="saree-item">
+                <img src="https://m.media-amazon.com/images/I/51TMccnMS9L._SY879_.jpg" alt="Saree 8">
+                <h3>Organza Saree</h3>
+                <h3>Origin: Europe </h3>
+                <p>Lightweight,airy and smooth texture that drapes elegantly</p>
+                <a href="https://m.media-amazon.com/images/I/7172PVLE5+L._SY879_.jpg" target="_blank">View More</a>
+            </div>
+            <div class="saree-item">
+                <img src="https://m.media-amazon.com/images/I/61fnTMy8BJL._SX679_.jpg" alt="Saree 9">
+                <h3>Gadwal Saree</h3>
+                    <h3>Origin: Telangana,India</h3>
+                    <p>Characterized by its distinctive border and pallu,Gadwal sarees are staple in telugu culture and heritage</p>
+                <a href="https://m.media-amazon.com/images/S/aplus-media-library-service-media/a11f1291-d7e7-48b4-b22e-ca967462e08f.__CR0,0,970,600_PT0_SX970_V1___.png" target="_blank">View More</a>
+            </div>
+            <div class="saree-item">
+                <img src="https://m.media-amazon.com/images/I/71pYYBSOY3L._SY879_.jpg" alt="Saree 10">
+                <h3>Tussar Saree</h3>
+                    <h3>Origin: Jharkhand</h3>
+                    <p>These sarees are known for their natural sheen,subtle texture,and earthy tones.</p>
+                <a href="https://m.media-amazon.com/images/I/71WlL005EJL._SY879_.jpg" target="_blank">View More</a>
+            </div>
+            <div class="saree-item">
+                <img src="https://m.media-amazon.com/images/I/61r4j4ZcYoL.jpg" alt="Saree 11">
+                <h3>Bandhani Saree</h3>
+                    <h3>Origin: Gujarat</h3>
+                    <p>Characterized by distinctive tie-dye patterns,Bandhani sarees are asymbol of gujarati culture and heritage</p>
+                <a href="https://m.media-amazon.com/images/S/aplus-media-library-service-media/cae0d7f3-96d9-4aa4-b5e4-37e641966b4f.__CR0,0,1464,600_PT0_SX1464_V1___.png" target="_blank">View More</a>
+            </div>
+            <div class="saree-item">
+                <img src="https://m.media-amazon.com/images/I/71WnmpciOBL._SY879_.jpg" alt="Saree 12">
+                <h3>Maheshwari Saree</h3>
+                <h3>Origin: Madhya Pradeshi</h3>
+                <p>Lighhtweight and elegant,Maheshwari sarees are known for their simple yet striking designs</p>
+                <a href="https://m.media-amazon.com/images/I/61qgkeAaoqL._SY879_.jpg" target="_blank">View More</a>
+            </div>
+        </div>
+    </section>
+      <section id="blog">
+        <h2>Latest Fashion Trends</h2>
+        <div class="blog-container">
+            <article class="blog-post">
+                <img src="https://www.singhanias.in/cdn/shop/articles/Blog_Banners_Images_68.png?v=1738048835&width=1728" alt="Saree Trend 1">
+                <h3>Top Saree Trends of 2025</h3>
+                <p>Discover the latest saree trends that are making waves in the fashion industry...</p>
+                <a href="https://www.singhanias.in/blogs/singhanias-saree-journal/the-evolution-of-saree-fashion-your-ultimate-guide-to-2025-trends">Read More</a>
+            </article>
+            <article class="blog-post">
+                <img src="https://th.bing.com/th/id/R.67d7fb03c11c77b29e195452d40fc063?rik=sKwdA0GdmGXInw&riu=http%3a%2f%2fsinghanias.in%2fcdn%2fshop%2farticles%2fBlog-01-Banner-16-06-2023-01.jpg%3fv%3d1687158760&ehk=tzwwcL%2ftgUbVjEi9xCIpS9nWTRd5JvPTuPA493619DU%3d&risl=&pid=ImgRaw&r=0" alt="Saree Styling Tips">
+                <h3>How to Style a Saree Elegantly</h3>
+                <p>Learn the best ways to drape and accessorize your saree for any occasion...</p>
+                <a href="https://youtu.be/S1TNkacdXxY">Read More</a>
+            </article>
+        </div>
+    </section>
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form id="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Elegant Sarees. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
